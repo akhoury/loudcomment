@@ -13,7 +13,7 @@ cd loudcomment
 
 # Extensions:
 ## Chrome Extension:
-* open [Chrome > Settings > Extensions](chrome://extensions/):
+* open [Chrome > Settings > Extensions](http://chrome://extensions/):
 * "Load unpacked extension..", then point to the directory of the ```manifest.json``` file, in this case it's in ```src/client/browsers_extensions/chrome```
 * open facebook.com and wait for input fields to augment.
 
