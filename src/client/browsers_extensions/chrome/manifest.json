@@ -1,0 +1,28 @@
+{
+    "name": "Loud Comment",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "description": "Loud Comment extension",
+    "permissions": [
+        "http://*/*", "tabs", "https://*/*"
+    ],
+    "homepage_url": "http://loudcomment.com",
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "default_locale": "en",
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*/*",
+                "http://*/*"
+            ],
+            "js": [
+                "src/lib/jquery.js", "src/inject/inject.js"
+            ]
+        }
+    ],
+    "web_accessible_resources": ["src/lib/jquery.js", "src/inject/inject.js"]
+}
