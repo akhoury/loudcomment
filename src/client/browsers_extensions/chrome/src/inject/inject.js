@@ -3,8 +3,7 @@ chrome.extension.sendMessage({}, function(response) {
         if (document.readyState === "complete") {
             clearInterval(readyStateCheckInterval);
 
-// script code starts here
-
+            // script code starts here
             (function($, undefined){
                 console.log("[LC][DEBUG] Script start");
 

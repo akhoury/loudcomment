@@ -1,0 +1,124 @@
+@import url("http://fonts.googleapis.com/css?family=Quicksand");
+
+/* css reset */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,
+samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-family: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+    color: #000;
+    background: #fff;
+}
+ol,
+ul {
+    list-style: none;
+}
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    vertical-align: middle;
+}
+caption,
+th,
+td {
+    text-align: left;
+    font-weight: normal;
+    vertical-align: middle;
+}
+a img {
+    border: none;
+}
+
+body {
+    font-family: 'Quicksand';
+    background-color: #faf9f0;
+    color: #444;
+}
+header {
+    padding: 50px 10px;
+    color: #fff;
+    font-size: 25px;
+    text-align: center;
+    background-color: #00A08D;
+    border-bottom: 1px solid #6F6F6F;
+    text-shadow: 0px -1px 0px #6F6F6F;
+}
+header p.slogan {
+    font-size: 16px;
+}
+.container {
+    overflow: hidden;
+    max-width: 971px;
+}
+.main-content,
+.container {
+    width: 100%;
+    margin: 50px auto;
+}
+.main-content {
+    float: left;
+}
+.main-content p {
+    margin-bottom: 20px;
+}
+p {
+    line-height: 1.8;
+}
+footer {
+    width: 500px;
+    margin: 50px auto;
+    border-top: 1px dotted #ccc;
+    padding-top: 5px;
+    font-size: 13px;
+    text-align: center;
+}
+div.home-box {
+    text-align: center;
+}
+div.recorder .btn {
+    margin: 20px;
+}
+a.static-a {
+    margin: 0 5px 0 5px;
+}
+div.brand {
+    margin: 0 auto;
+    width: 50%;
+    display: block;
+}
+div.brand h1,
+div.brand img {
+    display: inline-block;
+}
+.align-left {
+    text-align: left;
+}
+p.shrinked.home-msg {
+    max-width: 400px;
+    margin: 40px auto 0 auto;
+}
+
+/* twitter overrides or forked-copycats */
+.btn-lc-primary {
+    color: #ffffff;
+    background-color: #00a08d;
+    border-color: #006655;
+}
+.btn-lc-primary:hover,
+.btn-lc-primary:focus,
+.btn-lc-primary:active,
+.btn-lc-primary.active,
+.open .dropdown-toggle.btn-lc-primary {
+    color: #000000;
+    background-color: #00C2AF;
+    border-color: #006655;
+}

@@ -1,0 +1,21 @@
+extend ../layouts/main
+block content
+    .home-box
+        p.home-msg record your voice or upload a short audio to share.
+
+        .recorder
+            button(class='btn btn-lc-primary record') record
+            button(class='btn btn-lc-primary upload') upload
+            .notice
+            .result
+
+        p.home-msg.shrinked
+            | if you use
+            | <a href="http://google.com/chrome">Google Chrome</a>,
+            | we have an
+            | <a href="#">extension</a>
+            | to install, so you can audio-comment on
+            | <a href="http://facebook.com">Facebook.com</a>
+            | and listen to other's loud-comments
+            | without the need to come back here.
+

@@ -1,0 +1,29 @@
+!!!5
+html
+    head
+        title #{title} - Loud Comment
+        link(rel='stylesheet', href='/css/bootstrap.css')
+        link(rel='stylesheet', href='/css/style.css')
+        link(rel='shortcut icon', type='image/png' href='/img/favicon.png')
+    body
+        header
+            .brand
+                img(src='/img/logo.s.png', class='logo')
+                h1 loud comment
+            p.slogan scream all you want!
+
+        .container
+            .main-content
+                block content
+        footer
+            script(src='/js/jquery.js')
+            script(src='/js/bootstrap.js')
+
+            - var y = (new Date()).getFullYear()
+            p
+                | &#169; #{y} - loudcomment.com |
+                a(href='/terms', class='static-a') terms
+                | |
+                a(href='/about', class='static-a') about
+                | |
+                a(href='/beer', class='static-a') beer
