@@ -95,9 +95,11 @@ div.brand {
     width: 50%;
     display: block;
 }
-div.brand h1,
-div.brand img {
+a.brand h1,
+a.brand img {
     display: inline-block;
+    color: white;
+    text-decoration: none;
 }
 .align-left {
     text-align: left;
