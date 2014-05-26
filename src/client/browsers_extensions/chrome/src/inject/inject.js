@@ -12,12 +12,6 @@ chrome.extension.sendMessage({}, function(response) {
                 if(!window._LOUDCOMMENT)
                     window._LOUDCOMMENT = {};
 
-                // safe console
-                if (!console) console = {};
-                if (!console.log) console.log = function(){};
-                if (!console.error) console.error = function(){};
-                if (!console.warn) console.warn = function(){};
-
                 // default configs
                 var defaults = {
                     audible: {
