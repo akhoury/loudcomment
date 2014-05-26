@@ -4,13 +4,7 @@
         $ = LC.$,
         defaults = {
             codename: 'recorder',
-            template: LC.templates['recorder'],
-            meta: {
-                title: '',
-                description: '',
-                lander: '',
-                src: ''
-            }
+            templates: ['recorder/index', 'module/_header', 'module/_footer']
         };
 
     var Recorder = function(target, config) {

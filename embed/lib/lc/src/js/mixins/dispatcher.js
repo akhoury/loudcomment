@@ -1,9 +1,8 @@
-(function() {
+(function(global) {
 
-    var LC = LoudComment,
-        $ = LC.$;
+    var $ = global.$;
 
-    LC.asDispatcher = (function() {
+    global.asDispatcher = (function() {
 
         var on = function() {
                 this.$dispatcher.on.apply(this.$dispatcher, arguments);
@@ -50,4 +49,5 @@
             return this;
         };
     })();
-})();
+
+})(LoudComment);

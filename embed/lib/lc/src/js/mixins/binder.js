@@ -1,9 +1,8 @@
-(function() {
+(function(global) {
 
-    var LC = LoudComment,
-        $ = LC.$;
+    var $ = global.$;
 
-    LC.asBinder = (function() {
+    global.asBinder = (function() {
         var bind = function(callback) {
                 return callback.bind(this);
             },
@@ -56,4 +55,5 @@
             return this;
         };
     })();
-})();
+
+})(LoudComment);

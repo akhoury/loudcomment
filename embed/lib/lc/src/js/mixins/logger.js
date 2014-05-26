@@ -1,9 +1,9 @@
-(function() {
-    var LC = LoudComment,
-        $ = LC.$,
-        util = LC.util;
+(function(global) {
 
-    LC.asLogger = (function(){
+    var $ = global.$,
+        util = global.util;
+
+    global.asLogger = (function(){
         var levels = {
                 error: 6,
                 log: 5,
@@ -108,4 +108,4 @@
         };
     })();
 
-})();
+})(LoudComment);
