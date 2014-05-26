@@ -3,8 +3,8 @@
         util = LC.util,
         $ = LC.$,
         defaults = {
+            codename: 'recorder',
             template: LC.templates['recorder'],
-            prefix: 'lc:recorder: ',
             meta: {
                 title: '',
                 description: '',
@@ -27,7 +27,7 @@
         this.$el = target;
         this.config = $.extend(true, {}, defaults, config);
 
-        LC.asModule.call(this, {codename: 'recorder'});
+        LC.asModule.call(this, this, this.config);
         this.init();
     };
 

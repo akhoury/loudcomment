@@ -82,6 +82,11 @@
                 if (can.call(this, 'trace')) {
                     print.call(this, 'trace', arguments);
                 }
+            },
+
+            defaults = {
+                prefix: '',
+                level: 'info'
             };
 
         return function(context, config) {

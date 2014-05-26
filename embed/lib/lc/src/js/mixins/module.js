@@ -49,6 +49,10 @@
                 this.asModule.config.asLogger.config.prefix = 'lc:' + config.codename + ':';
             }
 
+            if (config.template) {
+                this.asModule.config.asTemplater.config.template = config.template;
+            }
+
             this.destroy = destroy;
             this.init = init;
 

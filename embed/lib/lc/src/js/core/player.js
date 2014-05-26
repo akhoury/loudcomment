@@ -3,8 +3,8 @@
         util = LC.util,
         $ = LC.$,
         defaults = {
+            codename: 'player',
             template: LC.templates['player'],
-            prefix: 'lc:player: ',
             meta: {
                 title: '',
                 description: '',
@@ -25,7 +25,7 @@
         this.$el = target;
         this.config = $.extend(true, {}, defaults, config);
 
-        LC.asModule.call(this, {codename: 'player'});
+        LC.asModule.call(this, this, this.config);
         this.init();
     };
 
