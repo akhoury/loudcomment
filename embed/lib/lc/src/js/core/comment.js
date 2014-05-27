@@ -57,7 +57,7 @@
             }
         };
 
-        LoudComment.Player = Player;
+        LoudComment.Comment = Comment;
     })();
 
 })(this);
