@@ -31,6 +31,7 @@
     Recorder.prototype = {
 		setup: function() {
 			this.$el.show();
+            this.bindAdjust();
 			this.bindUI();
 		},
 
@@ -64,18 +65,31 @@
 			this.dispatch('pause');
 		},
 
-        volume: function(val) {
+        adjust: function() {
+            var pos = this.$target.position(),
+                w = this.$target.width();
 
+            //todo: meh
+            this.$el.css({position: 'absolute', top: pos.top + 3, left: pos.left + w - 100});
+            this.trigger('adjust');
         },
 
-        state: function() {
+        bindAdjust: function() {
+            this.adjust();
 
-		},
+            if (this.$target.attrchange) {
+                // https://code.google.com/p/chromium/issues/detail?id=293948
+                this.$target.attrchange({trackValues: true, callback: this.adjust.bind(this)});
+            }
+            $(window).resize(this.adjust.bind(this));
+            this.$target.on('resize change', this.adjust.bind(this));
+        },
 
 		bindUI: function() {
 			this.on('record', this.onRecord.bind(this));
 			this.on('stop', this.onStop.bind(this));
 			this.on('play', this.onPlay.bind(this));
+			this.on('adjust', this.onAdjust.bind(this));
 			this.on('pause', this.onPause.bind(this));
 			this.on('populate', this.onUpload.bind(this));
 			this.on('cancel', this.onCancel.bind(this));
@@ -120,6 +134,9 @@
 			this.findByClass('cancel-btn').addClass('lc-hidden');
 			this.findByClass('times').addClass('lc-hidden');
 		},
+
+        onAdjust: function() {
+        },
 
 		onTimeUpdate: function() {
 

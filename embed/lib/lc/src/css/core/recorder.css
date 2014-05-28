@@ -1,5 +1,9 @@
 .lc-recorder-container {
     display: inline;
+    width: 100px;
+}
+.lc-recorder-container i {
+    margin: 2px;
 }
 .lc-recorder-mic:hover {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
