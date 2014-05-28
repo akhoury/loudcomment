@@ -1,6 +1,12 @@
 .lc-overflow-hidden {
     overflow: hidden;
 }
+.lc-hidden {
+    display: none;
+}
+.lc-inline {
+    display: inline;
+}
 .lc-pull-right {
     float: right;
 }
@@ -10,4 +16,25 @@
 .lc-hand {
     cursor: hand;
     cursor: pointer;
+}
+.lc-solid-hover {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+}
+.lc-solid-hover:hover {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1;
+}
+.lc-transparent-75 {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+    filter: alpha(opacity=75);
+    -moz-opacity: 0.75;
+    -khtml-opacity: 0.75;
+    opacity: 0.75;
 }

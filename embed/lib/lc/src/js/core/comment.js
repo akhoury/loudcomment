@@ -1,63 +1,43 @@
-(function() {
+(function(global) {
+	var util = global.util,
+		$ = global.$,
 
-    (function() {
-        var LC = LoudComment,
-            util = LC.util,
-            $ = LC.$,
+		defaults = {
+			codename: 'comment',
+			templates: ['comment/index', 'module/_header', 'module/_footer']
+		},
+		domName = function(name) {
+			return util.prefixedName('lc-comment-', name);
+		};
 
-            defaults = {
-                codename: 'comment',
-                templates: ['comment/index', 'module/_header', 'module/_footer']
-            };
+	var Comment = function(target, config) {
+		throw new Error('Not implemented yet!');
 
-        var Comment = function(target, config) {
+		this.$target = $(target);
+		this.target = this.$target.get(0);
+		this.$el = $('<div />')
+			.addClass(domName('container'))
+			.hide()
+			.appendTo(this.$target);
 
-            if (typeof target === 'string') {
-                target = $(target).eq(0);
-            }
+		this.config = $.extend(true, {}, defaults, config);
 
-            this.$el = target;
-            this.config = $.extend(true, {}, defaults, config);
+		global.asModule.call(this, this, this.config);
+		this.init();
+	};
 
-            LC.asModule.call(this, this, this.config);
-            this.init();
-        };
+	Comment.prototype = {
 
-        Comment.prototype = {
-            post: function() {
+		post: function() {},
+		get: function() {},
+		replyTo: function() {},
+		voteUp: function() {},
+		voteDown: function() {},
+		vote: function(inc) {},
+		favorite: function() {},
+		unfavorite: function() {}
+	};
 
-            },
+	global.Comment = Comment;
 
-            get: function() {
-
-            },
-
-            replyTo: function() {
-
-            },
-
-            voteUp: function() {
-
-            },
-
-            voteDown: function() {
-
-            },
-
-            vote: function(inc) {
-                inc = inc === 1 || inc === -1 ? inc : 0;
-            },
-
-            favorite: function() {
-
-            },
-
-            unfavorite: function() {
-
-            }
-        };
-
-        LoudComment.Comment = Comment;
-    })();
-
-})(this);
+})(LoudComment);

@@ -162,8 +162,6 @@
             },
 
             render = function() {
-                debugger;
-
                 this.$el.stop().empty().html(
                     this.template(
                         $.extend(true, this.config || {}, this.meta || {})

@@ -1,6 +1,7 @@
 (function(global) {
 
-    var $ = global.$;
+    var $ = global.$,
+		util = global.util;
 
     global.asBinder = (function() {
         var bind = function(callback) {
@@ -10,7 +11,7 @@
             actOnEvents = function(fn) {
                 var eventsBinderAttribute = this.asBinder.config.events;
 
-                if (!eventsBinderAttribute || !this.$el || !this.$el.length || fn) {
+                if (!eventsBinderAttribute || !this.$el || !this.$el.length || !fn) {
                     return;
                 }
 
@@ -18,15 +19,15 @@
                 elements.each(bind.call(this, function(i, el) {
                     el = $(el);
                     var values = el.attr(eventsBinderAttribute);
-                    util.trim(values).split(',').forEach(this._bind(function(tuple, j) {
-                        var parts = tuple.split(':'),
+                    util.trim(values).split(',').forEach(this.bind(function(pair, j) {
+                        var parts = pair.split(':'),
                             events = parts[0],
                             callback = parts[1];
 
                         if (typeof this[callback] === 'function') {
-                            el[fn](events, callback.bind(this));
+                            el[fn](events, this[callback].bind(this));
                         } else {
-                            if (this.warn) this.warn('player.' + callback  + ' is not a function');
+                            if (this.warn) this.warn(callback  + ' is not a function of', this);
                         }
                     }));
                 }));

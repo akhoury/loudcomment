@@ -1,9 +1,37 @@
-<div class="lc-recorder">
-    {{> 'module/_header' this }}
+<i data-lc-events="click:record"
+   class="lc-recorder-mic-btn lc-hand lc-solid-hover fa fa-microphone"
+   title="Record"
+        >
+</i>
 
-    <div class="lc-body">
-        <div class="lc-media"></div>
-    </div>
+<i data-lc-events="click:play"
+   class="lc-recorder-play-btn lc-hidden lc-hand lc-solid-hover fa fa-play"
+   title="Play"
+        >
+</i>
 
-    {{> 'module/_footer' this }}
-</div>
+<i data-lc-events="click:pause"
+   class="lc-recorder-pause-btn lc-hidden lc-hand lc-solid-hover fa fa-pause"
+   title="Pause"
+        >
+</i>
+
+<i data-lc-events="click:stop"
+   class="lc-recorder-stop-btn lc-hidden lc-hand lc-solid-hover fa fa-stop"
+   title="Stop"
+        >
+</i>
+
+<i data-lc-events="click:upload"
+   class="lc-recorder-upload-btn lc-hidden lc-hand lc-solid-hover fa fa-upload"
+   title="Upload"
+        >
+</i>
+
+<i data-lc-events="click:cancel"
+   class="lc-recorder-cancel-btn lc-hidden lc-hand lc-solid-hover fa fa-times"
+   title="Cancel & delete recording"
+        >
+</i>
+
+<span class="lc-recorder-time"></span>

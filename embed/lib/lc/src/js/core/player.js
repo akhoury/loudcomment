@@ -2,54 +2,58 @@
     var LC = LoudComment,
         util = LC.util,
         $ = LC.$,
-
         defaults = {
             codename: 'player',
-            templates: ['player/index', 'module/_header', 'module/_footer'],
+            templates: ['player/index'],
             meta: {
                 title: '',
                 description: '',
                 lander: '',
                 src: ''
-            }
-        };
+            },
+
+			playbableTextPattern: /loudcomment.com/
+		},
+
+		domName = function(name) {
+			return util.prefixedName('lc-player-', name);
+		};
 
     var Player = function(target, config) {
-        if (target instanceof LC.Recorder) {
-            this.recorder = target;
-            target = this.recorder.$el.find('.player');
-        }
-
-        if (typeof target === 'string') {
-            target = $(target).eq(0);
-        }
-
-        this.$el = target;
-        this.config = $.extend(true, {}, defaults, config);
-
-        this.id = 1;
+        this.$target = $(target).eq(0);
+		this.target = this.$target.get(0);
+		this.config = $.extend(true, {}, defaults, config);
+        this.$el = $('<div />')
+			.addClass(domName('container'))
+			.hide()
+			.appendTo(this.$target);
 
         LC.asModule.call(this, this, this.config);
-        this.init();
+        this.on('data', this.setup.bind(this));
+		this.init();
     };
 
     Player.prototype = {
-        play: function() {
-            this.dispatch('lc:player:playing');
+        setup: function() {
+			var a = this.$target.find('a:contains');
+		},
+
+		play: function() {
+            this.dispatch('playing');
         },
 
         pause: function() {
-            this.dispatch('lc:player:paused');
+            this.dispatch('paused');
         },
 
         stop: function() {
-            this.dispatch('lc:player:stopped');
+            this.dispatch('stopped');
         },
 
         volume: function(val) {
             if (val !== undefined && this.media.volume !== val) {
                 this.media.volume = val;
-                this.dispatch('lc:player:volume.changed', val);
+                this.dispatch('volume.changed', val);
             }
             return this.media.volume;
         }
