@@ -408,4 +408,4 @@
 		global.util = util.merge({}, util, global.util || {});
 	}
 
-})(window.LoudComment);
+})(LoudComment);

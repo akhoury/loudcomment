@@ -174,9 +174,6 @@
                 return this.$el;
             },
 
-            empty = function() {
-                return this.$el.empty();
-            },
 
             defaults = {
                 template: null,
@@ -205,7 +202,6 @@
             this.setTemplatesByUrls = setTemplatesByUrls;
 
             this.render = render;
-            this.empty = empty;
 
             return this;
         };

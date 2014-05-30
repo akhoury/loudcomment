@@ -1,17 +1,12 @@
 (function(global) {
 	var util = global.util,
 		$ = global.$,
-		domName = function(name) {
-			return util.prefixedName('lc-model-', name);
-		},
 		defaults = {
-			name: 'model',
+			widgetName: 'widget',
 			api: '//api.loudcomment.com',
+
 			asDispatcher: {},
-			asLogger: {
-				prefix: '',
-				level: 'error'
-			},
+			asLogger: {},
 			asBinder: {},
 			asTemplater: {},
 
@@ -20,16 +15,15 @@
 			templateIndex: null
 		};
 
-	var Model = function(target, config) {
-
+	var Widget = function(target, config) {
 		this.$target = $(target).eq(0);
 		this.target = this.$target.get(0);
-		this.config = $.extend(true, {}, defaults, config);
-		this.$el = $('<div />');
+		this.config = $.extend(true, {}, defaults, config, this.config);
+        this.$el = $('<div />');
 
 		/* abstract some mixins configs for 'sexiness' purposes */
-		if (this.config.codename) {
-			this.asModule.asLogger.prefix = 'lc:' + this.config.codename + ':';
+		if (this.config.widgetName) {
+			this.config.asLogger.prefix = 'lc:' + this.config.widgetName + ':';
 		}
 		if (this.config.templates) {
 			this.config.asTemplater.templates = this.config.templates;
@@ -41,18 +35,20 @@
 			this.config.asTemplater.templateIndexName = this.config.templateIndex;
 		}
 
+        /* mixins */
 		global.asDispatcher.call(this, this.config.asDispatcher);
 		global.asLogger.call(this, this.config.asLogger);
 		global.asBinder.call(this, this.config.asBinder);
 		global.asTemplater.call(this, this.config.asTemplater);
 
-		this.init();
+        this.uuid = this.config.widgetName + '-' + util.generateUUID();
+        this.$el.attr({'data-lc-uuid': this.uuid});
 	};
 
-	Model.prototype = {
+	Widget.prototype = {
 
 		init: function() {
-			this.$target.attr(domName('loaded'), true);
+			this.$target.attr(this.domName('loaded'), true);
 			this.ensureTemplates().done(this.bind(function() {
 				this.on('data', this.bind(function(data) {
 					this.meta = data || {};
@@ -69,9 +65,9 @@
 		},
 
 		destroy: function() {
-			this.$target.removeAttr(domName('loaded'));
+			this.$target.removeAttr(this.domName('loaded'));
 			this.unattachEvents();
-			this.empty().remove();
+			this.$el.empty().remove();
 		},
 
 		fetch: function() {
@@ -84,9 +80,21 @@
 			}).done(this.bind(function(response) {
 				this.trigger('data', response);
 			}));
-		}
+		},
+
+        fetchData: function() {
+            return this.fetch.apply(this, arguments);
+        },
+
+        domName: function(name) {
+            return util.prefixedName('lc-' + this.config.widgetName + '-', name);
+        },
+
+        eventName: function(name) {
+            return util.prefixedName('lc:' + this.config.widgetName + ':', name);
+        }
 	};
 
-	global.Model = Model;
+	global.Widget = Widget;
 
 })(LoudComment);
