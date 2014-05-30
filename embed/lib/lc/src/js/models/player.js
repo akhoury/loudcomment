@@ -1,5 +1,6 @@
 (function() {
     var LC = LoudComment,
+		Model = LC.Model,
         util = LC.util,
         $ = LC.$,
         defaults = {

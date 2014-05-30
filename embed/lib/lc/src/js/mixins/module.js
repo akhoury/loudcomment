@@ -40,51 +40,9 @@
                 }).done(this.bind(function(response) {
                     this.trigger('data', response);
                 }));
-            },
-
-            defaults = {
-                codename: 'module',
-                api: '//api.loudcomment.com',
-                asDispatcher: {
-                    config: {}
-                },
-                asLogger: {
-                    config: {
-                        prefix: '',
-                        level: 'error'
-                    }
-                },
-                asBinder: {
-                    config: {}
-                },
-                asTemplater: {
-                    config: {}
-                },
-				templateIndex: null
-            };
+            }
 
         return function(context, config) {
-            this.asModule = this.asModule || {};
-            this.asModule.config = $.extend(true, {}, defaults, config);
-
-            /* abstract some mixins configs for 'sexiness' purposes */
-            if (this.asModule.config.codename) {
-                this.asModule.config.asLogger.config.prefix = 'lc:' + this.asModule.config.codename + ':';
-            }
-            if (this.asModule.config.templates) {
-                this.asModule.config.asTemplater.config.templates = this.asModule.config.templates;
-            }
-            if (this.asModule.config.template) {
-                this.asModule.config.asTemplater.config.template = this.asModule.config.template;
-            }
-            if (this.asModule.config.templateIndex) {
-                this.asModule.config.asTemplater.config.templateIndexName = this.asModule.config.templateIndex;
-            }
-
-			global.asDispatcher.call(this, this.asModule.config.asDispatcher.config);
-			global.asLogger.call(this, this.asModule.config.asLogger.config);
-			global.asBinder.call(this, this.asModule.config.asBinder.config);
-			global.asTemplater.call(this, this.asModule.config.asTemplater.config);
 
 			this.destroy = destroy;
             this.init = init;
